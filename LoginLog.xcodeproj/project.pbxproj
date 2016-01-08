@@ -15,7 +15,6 @@
 		666278CD16E627490054E8EB /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = 666278CC16E627490054E8EB /* main.py */; };
 		666278CF16E627490054E8EB /* LLAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = 666278CE16E627490054E8EB /* LLAppDelegate.py */; };
 		666278D216E627490054E8EB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666278D016E627490054E8EB /* MainMenu.xib */; };
-		6669207716E67FC800C1BD51 /* LLBorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6669207616E67FC800C1BD51 /* LLBorderlessWindow.m */; };
 		66C62FE116E64529002B7100 /* LLLogWindowController.py in Resources */ = {isa = PBXBuildFile; fileRef = 66C62FE016E64529002B7100 /* LLLogWindowController.py */; };
 		94075E0B1987F44800369D46 /* libpython2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94075E0A1987F44800369D46 /* libpython2.7.dylib */; };
 /* End PBXBuildFile section */
@@ -35,8 +34,6 @@
 		666278CC16E627490054E8EB /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		666278CE16E627490054E8EB /* LLAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LLAppDelegate.py; sourceTree = "<group>"; };
 		666278D116E627490054E8EB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		6669207516E67FC800C1BD51 /* LLBorderlessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLBorderlessWindow.h; sourceTree = "<group>"; };
-		6669207616E67FC800C1BD51 /* LLBorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLBorderlessWindow.m; sourceTree = "<group>"; };
 		66C62FE016E64529002B7100 /* LLLogWindowController.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = LLLogWindowController.py; sourceTree = "<group>"; };
 		94075E0A1987F44800369D46 /* libpython2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpython2.7.dylib; path = ../../../../System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/libpython2.7.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,8 +93,6 @@
 			children = (
 				666278CC16E627490054E8EB /* main.py */,
 				666278CE16E627490054E8EB /* LLAppDelegate.py */,
-				6669207516E67FC800C1BD51 /* LLBorderlessWindow.h */,
-				6669207616E67FC800C1BD51 /* LLBorderlessWindow.m */,
 				666278D016E627490054E8EB /* MainMenu.xib */,
 				666278C116E627480054E8EB /* Supporting Files */,
 				66C62FE016E64529002B7100 /* LLLogWindowController.py */,
@@ -145,7 +140,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LL;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Göteborgs universitet";
 			};
 			buildConfigurationList = 666278B016E627480054E8EB /* Build configuration list for PBXProject "LoginLog" */;
@@ -188,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				666278C716E627480054E8EB /* main.m in Sources */,
-				6669207716E67FC800C1BD51 /* LLBorderlessWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +220,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -234,8 +227,9 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -249,7 +243,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -260,7 +254,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -268,7 +261,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -277,7 +270,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -286,6 +279,7 @@
 		666278D616E627490054E8EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoginLog/LoginLog-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -298,6 +292,7 @@
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "se.gu.it.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -306,6 +301,7 @@
 		666278D716E627490054E8EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoginLog/LoginLog-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -318,6 +314,7 @@
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "se.gu.it.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

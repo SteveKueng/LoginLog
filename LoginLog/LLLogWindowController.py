@@ -11,6 +11,10 @@ from objc import YES, NO, IBAction, IBOutlet
 from Foundation import *
 from AppKit import *
 
+class WindowArray(NSMutableArray):
+    @property
+    def prop(self):
+        return self._prop
 
 class LLLogViewDataSource(NSObject):
     
@@ -59,7 +63,7 @@ class LLLogWindowController(NSObject):
         # Open a log window that covers most of the screen.
         self.window.setTitle_(title)
         self.window.setCanBecomeVisibleWithoutLogin_(True)
-        self.window.setLevel_(NSScreenSaverWindowLevel - 1)
+        self.window.setLevel_(NSStatusWindowLevel)
         self.window.orderFrontRegardless()
         # Resize the log window so that it leaves a border on all sides.
         # Add a little extra border at the bottom so we don't cover the
@@ -76,19 +80,25 @@ class LLLogWindowController(NSObject):
         
         # Create a transparent, black backdrop window that covers the whole
         # screen and fade it in slowly.
-        self.backdropWindow.setCanBecomeVisibleWithoutLogin_(True)
-        self.backdropWindow.setLevel_(NSStatusWindowLevel)
-        self.backdropWindow.setFrame_display_(screenRect, True)
-        translucentColor = NSColor.blackColor().colorWithAlphaComponent_(0.75)
-        self.backdropWindow.setBackgroundColor_(translucentColor)
-        self.backdropWindow.setOpaque_(False)
-        self.backdropWindow.setIgnoresMouseEvents_(False)
-        self.backdropWindow.setAlphaValue_(0.0)
-        self.backdropWindow.orderFrontRegardless()
-        NSAnimationContext.beginGrouping()
-        NSAnimationContext.currentContext().setDuration_(2.0)
-        self.backdropWindow.animator().setAlphaValue_(1.0)
-        NSAnimationContext.endGrouping()
+        self.WindowArray = NSMutableArray.new()
+        for screen in NSScreen.screens():
+            Rect = screen.frame()
+            backdropWindow = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(Rect, NSBorderlessWindowMask, NSBackingStoreBuffered, NO)
+            backdropWindow.setCanBecomeVisibleWithoutLogin_(True)
+            backdropWindow.setLevel_(NSStatusWindowLevel)
+            #backdropWindow.setFrame_display_(screenRect, True)
+            translucentColor = NSColor.blackColor().colorWithAlphaComponent_(0.8)
+            backdropWindow.setBackgroundColor_(translucentColor)
+            backdropWindow.setOpaque_(False)
+            backdropWindow.setIgnoresMouseEvents_(True)
+            backdropWindow.setAlphaValue_(0.0)
+            backdropWindow.orderFrontRegardless()
+            NSAnimationContext.beginGrouping()
+            NSAnimationContext.currentContext().setDuration_(1.0)
+            backdropWindow.animator().setAlphaValue_(1.0)
+            NSAnimationContext.endGrouping()
+            self.WindowArray.addObject_(backdropWindow)
+            backdropWindow.makeKeyAndOrderFront_(NSApp)
     
     def watchLogFile_(self, logFile):
         # Display and continuously update a log file in the main window.
